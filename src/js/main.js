@@ -21,7 +21,6 @@ function selectBigText(evt) {
             console.log(theFile.name)
             console.log("authors[authorsKey]")
 
-            buildText();
         };
     })(files[0]);
     reader.readAsText(files[0]);

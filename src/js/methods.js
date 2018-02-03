@@ -1,74 +1,4 @@
-const abcLen = 32;
-const letterA = 1072
 
-function frequency(arr) {
-    var letters = arr.join('').substr(0)
-    var frequency = {};
-    for(var i = 0; i < letters.length; i++) {
-
-        var fr = letters[i].toLowerCase();
-        if(fr in frequency) {
-            frequency[fr]++
-        } else {
-            frequency[fr] = 0;
-            frequency[fr]++
-        }
-    }
-    for (var key in frequency) {
-        frequency[key] = Math.round( (frequency[key] / letters.length)*100000 ) / 100000
-    }
-    return frequency;
-}
-
-function findBigrams(arrText, k){
-    var str = arrText.join('')
-
-    var bigrByCode = [];
-    for(var i = 0; i<abcLen; i++){
-        bigrByCode[i] = [];
-        for(var j=0; j<abcLen; j++){
-           bigrByCode[i][j] = 0;
-        }
-    }
-
-    var arr = str.split('');
-    for (var i = 0; i < arr.length-1; i++) {
-        var a = arr[i].charCodeAt();
-        var b = arr[i+1].charCodeAt();
-        if(a>=letterA && a<letterA+abcLen &&
-           b>=letterA && b<letterA+abcLen){
-            bigrByCode[a-letterA][b-letterA] += 1;
-        }
-    }
-    return bigrByCode;
-};
-
-/* замутить сюда частоты биграмм */
-function metricsFind(famousBigr, anonBigr) {
-    var sum = 0;
-
-    for(var i = 0; i < 32; i++) {
-        for(var j = 0; j < 32; j++) {
-            sum += Math.abs(famousBigr[i][j]/famous[famousKey].arrText.length  - anonBigr[i][j]/anon.length);
-        }
-    }
-    return sum;
-}
-
-
-/* меняем местами элементы на позициях a и b */
-function stir(key, a, b) {
-    var stirKey = key.slice('').split('')
-    var es = stirKey[a];
-
-    stirKey[a] = stirKey[b]
-    stirKey[b] = es
-
-    stirKey = stirKey.join('')
-
-    console.log(stirKey)
-    return stirKey
-}
 
 function coincidenceIndex(anon) {
     var letters = anon.join('').substr(0)
@@ -99,6 +29,11 @@ function coincidenceIndex(anon) {
     //console.log(sum);
 
     return sum
+}
+
+function setToPage(text, gram) {
+    document.getElementById('header').innerHTML += " при n = " + gram
+    document.getElementById('result').innerHTML  = text
 }
 
 function getRandom(min, max){
@@ -145,6 +80,21 @@ function find(array, value) {
   return -1;
 }
 
-function log(quan) {
-    console.log(quan)
+
+function strCompare(str1, str2) {
+    var fs = '' + str1.localeCompare(str2);
+    var x = '';
+
+    switch(fs) {
+        case '-1':
+            x = 'меньше';
+            break;
+        case '1':
+            x = 'больше';
+            break;
+        case '0':
+            x = 'равно';
+            break;
+    }
+    return x;
 }

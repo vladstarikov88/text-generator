@@ -3,10 +3,10 @@ function buildText() {
     text.arrText = authors[authorsKey].arrText;
 
     let newText = '';
-    let textLenYouWant = 25;
-    let gram = 3
+    let textLenYouWant = 600;
+    let gram = 8
 
-    /*for(let n = 1; n <= gram; n++) {
+    for(let n = 1; n <= gram; n++) {
         text.findnGrams(n, true);
 
         let obj = text.nGrams;
@@ -39,19 +39,13 @@ function buildText() {
                 }
             }
         }
-    }*/
-
-    console.log(newText)
-    /* ъясни */
-
-    newText = 'гри'
-
+        console.log(newText)
+    }
 
     let ngram = text.findnGrams(gram);
-    console.log(ngram)
-
-
+    var prev = '';
     for(let u = gram - 1; u < textLenYouWant; u++){
+        var m = 0;
         let sum = 0,
             maxRand = 0;
 
@@ -63,20 +57,31 @@ function buildText() {
 
         maxRand = getRandomFull(0, maxRand);
 
-        console.log('\t\t\t\tnewText: ' + newText)
         for(let key in ngram) {
-            /*if(key.indexOf(newText.substr(0, gram-1)) == 1 ) {*/
             if(newText.slice(-gram+1) == key.substr(0, gram-1)) {
-                if(sum < maxRand) {
+                if(sum <= maxRand) {
                     sum += ngram[key];
-                    console.log('key: \t' + key)
-                    console.log('newText: \t' + newText)
-                    console.log('sum: \t' + sum)
-                } else {
+                }
+                if(sum > maxRand) {
                     newText += key.slice(-1);
                     break;
                 }
+                if(newText == prev) {
+                    m++;
+                    if (m > 5) {
+                        console.log(m)
+                        newText += key.slice(-1);
+                        break;
+                    }
+                }
             }
         }
+        prev = newText;
+        console.log(newText)
     }
+
+    newText = newText.split('_').join(' ')
+    console.log(newText)
+
+    setToPage(newText, gram)
 }
