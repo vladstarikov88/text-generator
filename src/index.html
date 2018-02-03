@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+
+    <link rel="stylesheet"  href="css/reset.css">
+    <link rel="stylesheet"  href="css/main.css">
+</head>
+<body>
+
+    <section class="app">
+        <div class="app_head">
+            <h1>Анализ частотных характеристик открытого текста</h1>
+        </div>
+        <div class="app_flex">
+            <div class="application">
+                <h2>Загрузить текст для анализа</h2>
+                <label for="text"></label>
+                <input type="file" id="text" name="text">
+                <button onclick="buildText()">Старт</button>
+            </div>
+        </div>
+
+        <div class="app_flex">
+            <div class="application">
+                <h2>Результат</h2>
+                <p></p>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="js/index.js"></script>
+</body>
+</html>
