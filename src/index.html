@@ -19,6 +19,10 @@
                 <h2>Загрузить текст для анализа</h2>
                 <label for="text"></label>
                 <input type="file" id="text" name="text">
+
+                <br>
+                <input class=small id=len type="text" placeholder="Длина текста">
+                <input class=small id=n type="text" placeholder="Параметр N">
                 <button onclick="buildText()">Старт</button>
             </div>
         </div>
@@ -27,6 +31,7 @@
             <div class="application">
                 <h2 id=header>Результат</h2>
                 <p id=result></p>
+                <p id=time></p>
             </div>
         </div>
     </section>

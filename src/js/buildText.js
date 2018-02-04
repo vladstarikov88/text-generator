@@ -3,9 +3,13 @@ function buildText() {
     text.arrText = authors[authorsKey].arrText;
 
     let newText = '';
-    let textLenYouWant = 600;
-    let gram = 8
+    let textLenYouWant = document.getElementById("len").value;
+    let gram = document.getElementById("n").value
+    if(!textLenYouWant) textLenYouWant = 100
+    if(!gram) gram = 6
 
+
+    let start = new Date();
     for(let n = 1; n <= gram; n++) {
         text.findnGrams(n, true);
 
@@ -42,6 +46,7 @@ function buildText() {
         console.log(newText)
     }
 
+
     let ngram = text.findnGrams(gram);
     var prev = '';
     for(let u = gram - 1; u < textLenYouWant; u++){
@@ -69,7 +74,6 @@ function buildText() {
                 if(newText == prev) {
                     m++;
                     if (m > 5) {
-                        console.log(m)
                         newText += key.slice(-1);
                         break;
                     }
@@ -80,8 +84,11 @@ function buildText() {
         console.log(newText)
     }
 
+
     newText = newText.split('_').join(' ')
     console.log(newText)
-
-    setToPage(newText, gram)
+    let end = new Date();
+    let time = (end - start)/1000
+    console.log("Время работы программы " + time + ' секунд' );
+    setToPage(newText, gram, time)
 }

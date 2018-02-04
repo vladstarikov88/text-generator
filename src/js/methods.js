@@ -31,9 +31,10 @@ function coincidenceIndex(anon) {
     return sum
 }
 
-function setToPage(text, gram) {
+function setToPage(text, gram, time) {
     document.getElementById('header').innerHTML += " при n = " + gram
     document.getElementById('result').innerHTML  = text
+    document.getElementById('time').innerHTML  = "Время работы программы " + time + ' секунд'
 }
 
 function getRandom(min, max){
